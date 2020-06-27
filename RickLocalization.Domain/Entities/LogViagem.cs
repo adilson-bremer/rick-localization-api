@@ -18,7 +18,7 @@ namespace RickLocalization.Domain.Entities {
 
         public int DimensaoOrigemId { get; set; }
 
-        public int DimensaoDestinoId { get; set; }
+        public int DimensaoDestinoId { get; set; }        
 
         public DateTime DataViagem { get; set; }
     }

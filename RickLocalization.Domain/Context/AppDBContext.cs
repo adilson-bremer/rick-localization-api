@@ -13,7 +13,5 @@ namespace RickLocalization.Domain.Context {
         public DbSet<Viajante> Viajantes { get; set; }
         public DbSet<Dimensao> Dimensoes { get; set; }
         public DbSet<LogViagem> LogsViagens { get; set; }
-
-
     }
 }

@@ -16,9 +16,5 @@
     <ProjectReference Include="..\RickLocalization.Domain\RickLocalization.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 
 </Project>

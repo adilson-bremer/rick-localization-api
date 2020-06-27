@@ -28,6 +28,10 @@ namespace RickLocalization.Api {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
 
+            services.AddCors(options => {
+                options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader());
+            });
+
             services.AddResponseCaching();
 
             services.AddControllers();
@@ -47,6 +51,8 @@ namespace RickLocalization.Api {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors();
 
             app.UseResponseCaching();
 

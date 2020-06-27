@@ -19,8 +19,11 @@ namespace RickLocalization.Domain.Repositories {
         }
 
         public async Task<IEnumerable<Viajante>> GetAllAsync() {
-
             return await _appDBContext.Viajantes.ToListAsync();
+        }
+
+        public Viajante Get(int id) {
+            return _appDBContext.Viajantes.Where(v => v.Id == id).Include(v => v.Dimensao).SingleOrDefault();
         }
     }
 }

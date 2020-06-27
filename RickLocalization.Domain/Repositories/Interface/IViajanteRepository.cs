@@ -8,6 +8,8 @@ namespace RickLocalization.Domain.Repositories.Interface {
 
     public interface IViajanteRepository {
 
+        Viajante Get(int id);
+
         Task<IEnumerable<Viajante>> GetAllAsync();
     }
 }
