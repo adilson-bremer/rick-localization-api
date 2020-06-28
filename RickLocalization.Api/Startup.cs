@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using RickLocalization.Domain.Context;
 using RickLocalization.Domain.Repositories;
 using RickLocalization.Domain.Repositories.Interface;
@@ -43,6 +44,8 @@ namespace RickLocalization.Api {
             services.AddDbContext<AppDBContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddSwaggerGen(x => x.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "Rick Localization API", Version = "v1" }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +55,8 @@ namespace RickLocalization.Api {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+
             app.UseCors();
 
             app.UseResponseCaching();
@@ -59,6 +64,10 @@ namespace RickLocalization.Api {
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwaggerUI(x => {
+                x.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Rick Localization API V1");
+            });
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();

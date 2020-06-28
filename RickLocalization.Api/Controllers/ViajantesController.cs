@@ -24,7 +24,6 @@ namespace RickLocalization.Api.Controllers {
         }
 
         [HttpGet]
-        [ResponseCache(Duration = 120)]
         public async Task<ActionResult<IEnumerable<ViajanteDto>>> Index() {
 
             IEnumerable<Viajante> viajantes = await _unitOfWork.ViajanteRepository.GetAllAsync();

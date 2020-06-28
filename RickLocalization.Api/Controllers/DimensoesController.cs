@@ -24,6 +24,7 @@ namespace RickLocalization.Api.Controllers {
         }
 
         [HttpGet]
+        [ResponseCache(Duration = 600)]
         public async Task<ActionResult<IEnumerable<Dimensao>>> Get() {
 
             IEnumerable<Dimensao> dimensoes = await _unitOfWork.DimensaoRepository.GetAll();
