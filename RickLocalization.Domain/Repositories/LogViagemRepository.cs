@@ -16,9 +16,7 @@ namespace RickLocalization.Domain.Repositories {
 
         private readonly AppDBContext _appDBContext;
 
-        //private readonly string CONNECTION_STRING = "Server=(localdb)\\mssqllocaldb;Database=RickLocalization;Trusted_Connection=True";
-
-        private readonly string CONNECTION_STRING = "Server=tcp:sql-estudo.database.windows.net,1433;Initial Catalog=rick-localization;Persist Security Info=False;User ID=sqlazureadm;Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private readonly string CONNECTION_STRING = AppValues.SQLSERVER_CONNECTION_STRING;
 
         public LogViagemRepository(AppDBContext appDBContext) {
             _appDBContext = appDBContext;

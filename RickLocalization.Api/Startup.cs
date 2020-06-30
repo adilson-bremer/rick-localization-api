@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RickLocalization.Domain.Context;
+using RickLocalization.Domain.IoC;
 using RickLocalization.Domain.Repositories;
 using RickLocalization.Domain.Repositories.Interface;
 
@@ -39,12 +40,16 @@ namespace RickLocalization.Api {
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddDomaninDependency(Configuration); // Nova Injeção de Dependência
 
+            /* Antiga Injeção de Dependência
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             services.AddDbContext<AppDBContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-
+            */
+            
             services.AddSwaggerGen(x => x.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "Rick Localization API", Version = "v1" }));
         }
 
